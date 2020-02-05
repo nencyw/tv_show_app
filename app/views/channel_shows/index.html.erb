@@ -1,0 +1,27 @@
+
+<table id="example_datatable" class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th>Show</th>
+      <th>Timing</th>
+      <th>Channel</th>
+      <th>action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tv_shows.each do |show| %>
+      <tr>
+        <td><%= show.name%></td>
+        <td><%= show.timing&.try(:strftime, '%I:%M %p')%></td>
+        <td><%= show&.channel.name%></td>
+        <td>
+          <% if current_user && current_user.favorited?(show) %>
+            <%= link_to 'Remove from favourite',remove_from_favourite_channel_show_path(show), method: :post%>
+          <% else %>
+            <%= link_to 'Add to favourite', current_user.present? ? add_to_favourite_channel_show_path(show) : new_user_session_path, method: :post%>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

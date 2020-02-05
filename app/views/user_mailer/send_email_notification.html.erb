@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to <%= @user.email %></h1>
+    <p>
+      Hey your favourite show <%= @tv_show.name %> will start soon on <%= @tv_show.channel.name %> at <%= @tv_show.timing&.try(:strftime, '%I:%M %p') %>.<br>
+    </p>
+    <p>
+      Please watch your show after 30 minutes only!!
+    </p>
+    <p>Thank you!!</p>
+  </body>
+</html>
