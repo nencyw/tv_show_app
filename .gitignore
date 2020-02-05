@@ -26,7 +26,7 @@
 
 /public/assets
 .byebug_history
-
+.env.development
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 crons.log
