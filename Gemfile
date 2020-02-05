@@ -39,7 +39,6 @@ gem 'bootsnap', '>= 1.1.0', require: false
 #for authentication
 gem 'devise'
 
-
 #for bootstrap support
 gem 'bootstrap-sass', '~> 3.4.1'
 gem 'jquery-rails'

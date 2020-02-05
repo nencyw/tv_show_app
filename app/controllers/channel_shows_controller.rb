@@ -2,7 +2,6 @@ class ChannelShowsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :set_show, only: [:add_to_favourite, :remove_from_favourite]
 
-  
   def index
     @tv_shows = ChannelShow.includes(:channel).all
   end
@@ -10,18 +9,18 @@ class ChannelShowsController < ApplicationController
   def add_to_favourite
     if current_user.present? && @tv_show.present?
       current_user.favorite(@tv_show) if current_user.present?
-      redirect_to root_path
+      redirect_to root_path, :flash => { :success => "Successfully Added to your favourite list" }
     else
-      redirect_to root_path, alert: 'Something went wrong'
+      redirect_to root_path, :flash => { :error => "something went wrong!" }
     end
   end
 
   def remove_from_favourite
     if current_user.present? && @tv_show.present?
       current_user.unfavorite(@tv_show) 
-      redirect_to root_path
+      redirect_to root_path,:flash => { :success => "Successfully removed from your list" }
     else
-      redirect_to root_path, alert: 'Something went wrong'
+      redirect_to root_path, :flash => { :error => "something went wrong!" }
     end
   end
 
